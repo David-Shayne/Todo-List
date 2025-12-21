@@ -36,6 +36,10 @@ class TodoProject extends TodoObject {
 	get todoItemArray() {
 		return this.#todoItemArray;
 	}
+
+	overwriteTodoItemArray = function (todoItemArray) {
+		this.#todoItemArray = todoItemArray;
+	};
 }
 
 class TodoItem extends TodoObject {
