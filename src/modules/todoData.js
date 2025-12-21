@@ -15,7 +15,8 @@ class TodoObject {
 class TodoProject extends TodoObject {
 	#todoItemArray;
 
-	constructor(title, desc, todoItemArray = []) {
+	//Takes in a parsed JSON object to create the instance
+	constructor({ title, desc, todoItemArray = [] }) {
 		super(title, desc);
 		this.#todoItemArray = todoItemArray;
 	}
@@ -46,7 +47,8 @@ class TodoItem extends TodoObject {
 	#completed;
 	#priority;
 
-	constructor(title, desc, priority = 1, completed = false, dueDate = Date.now()) {
+	//Takes in a parsed JSON object to create the instance
+	constructor({ title, desc, priority = 1, completed = false, dueDate = Date.now() } = {}) {
 		super(title, desc);
 		this.#priority = priority;
 		this.#completed = completed;

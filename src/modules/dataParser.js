@@ -3,25 +3,26 @@ import { TodoItem, TodoProject } from "./todoData";
 export default class dataParser {
 	constructor() {}
 
-	static #parseTodoItems(todoItemArrayData) {
-		const todosArray = [];
-		for (let todoItemObj of todoItemArrayData) {
-			todosArray.push(new TodoItem(todoItemObj));
+	static #parseTodoItems(todoItemObjects) {
+		let itemInstanceArray = [];
+		for (let itemObject of todoItemObjects) {
+			const itemInstance = new TodoItem(itemObject);
+			itemInstanceArray.push(itemInstance);
 		}
-		return todosArray;
+		return itemInstanceArray;
 	}
 
-	static #parseProject(projectData) {
-		const project = new TodoProject(projectData);
-		project.overwriteTodoItemArray(this.#parseTodoItems(projectData.todoItemArray));
-		return project;
+	static #parseProject(projectObject) {
+		projectObject.todoItemArray = this.#parseTodoItems(projectObject.todoItemArray);
+		const projectInstance = new TodoProject(projectObject);
+		return projectInstance;
 	}
 
-	static parseProjectArray(data) {
-		const projectArray = [];
-		for (let project of data) {
-			projectArray.push(this.#parseProject(project));
+	static parseProjectArray(projectArray) {
+		const projects = [];
+		for (let project of projectArray) {
+			projects.push(this.#parseProject(project));
 		}
-		return projectArray;
+		return projects;
 	}
 }

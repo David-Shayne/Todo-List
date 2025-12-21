@@ -3,8 +3,8 @@
 		"title": "project1",
 		"desc": "My first project!",
 		"todoItemArray": [
-			{ "title": "clean the house", "desc": "Make sure everything is clean" },
-			{ "title": "finish sanding wall" }
+			{ "title": "clean the house", "desc": "Make sure everything is clean", "priority": 3 },
+			{ "title": "finish sanding wall", "completed": "true" }
 		]
 	}
 ]
