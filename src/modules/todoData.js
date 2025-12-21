@@ -2,14 +2,14 @@
 class TodoObject {
 	#id = crypto.randomUUID();
 
-	constructor(title, desc) {
+	constructor(title, desc = "") {
 		this.title = title;
 		this.desc = desc;
 	}
 
-	getID = function () {
+	get id() {
 		return this.#id;
-	};
+	}
 }
 
 class TodoProject extends TodoObject {
@@ -24,22 +24,25 @@ class TodoProject extends TodoObject {
 		this.#todoItemArray.push(todoItem);
 	};
 
+	// Matches a todo item to the passed ID and removes it
 	removeTodoItem = function (todoItemId) {
 		this.#todoItemArray.forEach((currentTodoItem, index) => {
-			currentTodoItem.getID() === todoItemId ?? this.#todoItemArray.splice(index, 1);
+			if (currentTodoItem.id === todoItemId) {
+				this.#todoItemArray.splice(index, 1);
+			}
 		});
 	};
 
-	getTodoItemArray = function () {
+	get todoItemArray() {
 		return this.#todoItemArray;
-	};
+	}
 }
 
 class TodoItem extends TodoObject {
 	#completed;
 	#priority;
 
-	constructor(title, desc, priority, completed, dueDate) {
+	constructor(title, desc, priority = 1, completed = false, dueDate = Date.now()) {
 		super(title, desc);
 		this.#priority = priority;
 		this.#completed = completed;
