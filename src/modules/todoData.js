@@ -36,16 +36,36 @@ class TodoProject extends TodoObject {
 }
 
 class TodoItem extends TodoObject {
+	#completed;
+	#priority;
+
 	constructor(title, desc, priority, completed, dueDate) {
 		super(title, desc);
-		this.priority = priority;
-		this.completed = completed;
+		this.#priority = priority;
+		this.#completed = completed;
 		this.dueDate = dueDate;
 	}
 
+	get completed() {
+		return this.#completed;
+	}
+
 	toggleCompleted = function () {
-		this.completed = !this.completed;
+		this.#completed = !this.completed;
 	};
+
+	set priority(int) {
+		if (int > 1 && int <= 3) {
+			this.#priority = int;
+			return;
+		}
+
+		throw new Error("Priority value must be an integer between 1 and 3");
+	}
+
+	get priority() {
+		return this.#priority;
+	}
 }
 
 export { TodoItem, TodoProject };
