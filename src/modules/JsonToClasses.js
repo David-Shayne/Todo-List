@@ -1,4 +1,4 @@
-import { TodoItem, TodoProject } from "./todoData";
+import { TodoItem, TodoProject } from "./todoClasses";
 
 export default class JsonToClasses {
 	constructor() {}
