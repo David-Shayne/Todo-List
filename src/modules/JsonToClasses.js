@@ -3,26 +3,39 @@ import { TodoItem, TodoProject } from "./todoData";
 export default class JsonToClasses {
 	constructor() {}
 
-	static #parseTodoItems(todoItemObjects) {
-		let itemInstanceArray = [];
-		for (let itemObject of todoItemObjects) {
-			const itemInstance = new TodoItem(itemObject);
-			itemInstanceArray.push(itemInstance);
+	// Turns an array of JS objects into an array of instanced TodoItem's
+	static #parseTodoItems(todoObjects) {
+		let todoInstanceArray = [];
+
+		for (let todoObject of todoObjects) {
+			const todoInstance = new TodoItem(todoObject);
+			todoInstanceArray.push(todoInstance);
 		}
-		return itemInstanceArray;
+		return todoInstanceArray;
 	}
 
+	// Turns a JS object into an instanced TodoProject
 	static #parseProject(projectObject) {
+		// Replacing the current todoItemArray of objects with TodoItem instances
 		projectObject.todoItemArray = this.#parseTodoItems(projectObject.todoItemArray);
-		const projectInstance = new TodoProject(projectObject);
-		return projectInstance;
+
+		return new TodoProject(projectObject);
 	}
 
-	static parseAllData(projectArray) {
+	static parseAllData(stateJSON) {
+		// Converts the JSON state to a JS Object
+		const stateObject = JSON.parse(stateJSON);
 		const projects = [];
-		for (let project of projectArray) {
+
+		// Iterates through projects in state object and creates a new object with Instanced projects
+		for (let project of stateObject) {
 			projects.push(this.#parseProject(project));
 		}
 		return projects;
+	}
+
+	static getStateJSON(state) {
+		const cleanObjectState = state.map((project) => project.toCleanObject());
+		return JSON.stringify(cleanObjectState);
 	}
 }

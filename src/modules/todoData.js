@@ -11,6 +11,10 @@ class TodoObject {
 	get id() {
 		return this.#id;
 	}
+
+	set id(id) {
+		return id;
+	}
 }
 
 class TodoProject extends TodoObject {
@@ -20,6 +24,7 @@ class TodoProject extends TodoObject {
 	constructor({ title, desc, todoItemArray = [], id }) {
 		super(title, desc, id);
 		this.#todoItemArray = todoItemArray;
+		this.id = id;
 	}
 
 	addTodoItem = function (todoItem) {
@@ -42,6 +47,12 @@ class TodoProject extends TodoObject {
 	overwriteTodoItemArray = function (todoItemArray) {
 		this.#todoItemArray = todoItemArray;
 	};
+
+	// Returns a cleaned object including private properties
+	toCleanObject() {
+		const cleanedTodoItemArray = this.todoItemArray.map((todo) => todo.toCleanObject());
+		return { title: this.title, desc: this.desc, id: this.id, todoItemArray: cleanedTodoItemArray };
+	}
 }
 
 class TodoItem extends TodoObject {
@@ -75,6 +86,17 @@ class TodoItem extends TodoObject {
 
 	get priority() {
 		return this.#priority;
+	}
+
+	// Returns a cleaned object including private properties
+	toCleanObject() {
+		return {
+			title: this.title,
+			desc: this.desc,
+			id: this.id,
+			priority: this.priority,
+			completed: this.completed,
+		};
 	}
 }
 
