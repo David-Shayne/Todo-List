@@ -8,5 +8,6 @@ import InternalState from "./modules/InternalState";
 const state = new InternalState(JsonToClasses.parseAllData(JSON_PROJ_DATA));
 const id = "a";
 
-state.deleteProject(id);
+// state.deleteProject(id);
+state.addProject(new TodoProject({ title: "hello world" }));
 console.log(state.getState());
