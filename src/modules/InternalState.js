@@ -1,4 +1,4 @@
-// Single responsibility is to hold and modify an internal state of todo data
+// Single responsibility is to hold and modify an internal state object of todo data
 export default class InternalState {
 	#state;
 
