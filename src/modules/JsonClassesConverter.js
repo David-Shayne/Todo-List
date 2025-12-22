@@ -1,6 +1,7 @@
 import { TodoItem, TodoProject } from "./todoClasses";
 
-export default class JsonToClasses {
+// Single responsibility is to convert JSON to todo instances and vice versa (used in localStorageAPI and internal state)
+export default class JsonClassesConverter {
 	constructor() {}
 
 	// Turns an array of JS objects into an array of instanced TodoItem's
@@ -22,7 +23,8 @@ export default class JsonToClasses {
 		return new TodoProject(projectObject);
 	}
 
-	static parseAllData(stateJSON) {
+	// returns an object with todo instances from JSON data
+	static getJsonToStateObject(stateJSON) {
 		// Converts the JSON state to a JS Object
 		const stateObject = JSON.parse(stateJSON);
 		const projects = [];
@@ -34,7 +36,8 @@ export default class JsonToClasses {
 		return projects;
 	}
 
-	static getStateJSON(state) {
+	// Takes in the state object and returns a stringified JSON object for storage in LocalStorage
+	static getStateObjectToJson(state) {
 		const cleanObjectState = state.map((project) => project.toCleanObject());
 		return JSON.stringify(cleanObjectState);
 	}
