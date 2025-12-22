@@ -10,10 +10,6 @@ export default class InternalState {
 		return this.#state;
 	}
 
-	getProjects() {
-		return this.#state;
-	}
-
 	// Deletes project from internal state by matching UUID
 	deleteProject(id) {
 		this.#state = this.#state.filter((project) => id !== project.id);
