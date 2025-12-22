@@ -7,5 +7,6 @@ import InternalState from "./modules/InternalState";
 
 const state = new InternalState(JsonToClasses.parseAllData(JSON_PROJ_DATA));
 const id = "a";
-const project1 = state.getProject(id);
-console.log(project1);
+
+state.deleteProject(id);
+console.log(state.getState());

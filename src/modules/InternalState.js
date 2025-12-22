@@ -11,14 +11,19 @@ export default class InternalState {
 		this.#state = state;
 	}
 
-	updateState(data, location) {
-		this.#state[location] = data;
+	getState() {
+		return this.#state;
 	}
 
+	// Deletes project from internal state by matching UUID
+	deleteProject(id) {
+		this.#state = this.#state.filter((value, index) => id !== value.id);
+	}
+
+	// Returns the first project instance that matches the UUID paramater
 	getProject(id) {
 		let project;
 
-		//
 		this.#state.forEach((element) => {
 			if (id === element.id) {
 				project = element;
@@ -27,9 +32,5 @@ export default class InternalState {
 		});
 
 		return project;
-	}
-
-	getState() {
-		return this.#state;
 	}
 }
