@@ -1,6 +1,6 @@
 import { TodoItem, TodoProject } from "./todoData";
 
-export default class dataParser {
+export default class JsonToClasses {
 	constructor() {}
 
 	static #parseTodoItems(todoItemObjects) {
@@ -18,7 +18,7 @@ export default class dataParser {
 		return projectInstance;
 	}
 
-	static parseProjectArray(projectArray) {
+	static parseAllData(projectArray) {
 		const projects = [];
 		for (let project of projectArray) {
 			projects.push(this.#parseProject(project));
