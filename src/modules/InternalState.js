@@ -2,12 +2,16 @@
 export default class InternalState {
 	#state;
 
-	constructor(state) {
+	constructor(state = []) {
 		this.#state = state;
 	}
 
 	getState() {
 		return this.#state;
+	}
+
+	setState(stateObject) {
+		this.#state = stateObject;
 	}
 
 	// Deletes project from internal state by matching UUID
