@@ -1,10 +1,11 @@
 //Module that includes data objects for the todo functionality
 class TodoObject {
-	#id = crypto.randomUUID();
+	#id;
 
-	constructor(title, desc = "") {
+	constructor(title, desc = "", id = crypto.randomUUID()) {
 		this.title = title;
 		this.desc = desc;
+		this.#id = id;
 	}
 
 	get id() {
@@ -16,8 +17,8 @@ class TodoProject extends TodoObject {
 	#todoItemArray;
 
 	//Takes in a parsed JSON object to create the instance
-	constructor({ title, desc, todoItemArray = [] }) {
-		super(title, desc);
+	constructor({ title, desc, todoItemArray = [], id }) {
+		super(title, desc, id);
 		this.#todoItemArray = todoItemArray;
 	}
 
