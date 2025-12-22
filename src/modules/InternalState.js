@@ -6,7 +6,7 @@ export default class InternalState {
 		this.#state = state;
 	}
 
-	get state() {
+	getState() {
 		return this.#state;
 	}
 
