@@ -5,14 +5,18 @@
 //Effectively the instance of this state class will be the database stored in local memory and localStorage on browser
 
 // Single responsibility is to hold and modify an internal state
-export default class InternalState {
+class InternalState {
 	#state;
 
 	constructor(state) {
 		this.#state = state;
 	}
 
-	getState() {
+	get state() {
+		return this.#state;
+	}
+
+	getProjects() {
 		return this.#state;
 	}
 
@@ -31,3 +35,7 @@ export default class InternalState {
 		this.#state.push(projectInstance);
 	}
 }
+
+class LocalStorageAPI {}
+
+export { LocalStorageAPI, InternalState };
