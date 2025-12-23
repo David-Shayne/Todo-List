@@ -19,14 +19,7 @@ export default class InternalState {
 
 	// Returns project from internal state by matching UUID
 	static getProject(id) {
-		const project = this.#state.filter((project) => id === project.id);
-
-		if (!project[0]) {
-			console.error(`Project with id ${id} not found`);
-			return null;
-		}
-
-		return project;
+		return this.#state.filter((project) => id === project.id);
 	}
 
 	// Adds a project to internal state
