@@ -17,9 +17,15 @@ export default class InternalState {
 		this.#state = this.#state.filter((project) => id !== project.id);
 	}
 
-	// Returns project from internal state by matching UUID
+	// Returns first matching project from internal state by matching UUID
 	static getProject(id) {
-		return this.#state.filter((project) => id === project.id);
+		const project = this.#state.filter((project) => id === project.id)[0];
+
+		if (!project) {
+			throw new Error(`Project with id ${id} not found`);
+		}
+
+		return project;
 	}
 
 	// Adds a project to internal state
@@ -29,5 +35,15 @@ export default class InternalState {
 		}
 
 		this.#state.push(projectInstance);
+	}
+
+	static modifyProject(id, paramater, value) {
+		const projectInstance = this.getProject(id);
+
+		if (!projectInstance[paramater]) {
+			throw new Error(`Paramater ${paramater} not found in project instance`);
+		}
+
+		projectInstance[paramater] = value;
 	}
 }

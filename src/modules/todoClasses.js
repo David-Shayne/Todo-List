@@ -12,10 +12,6 @@ class TodoObject {
 	get id() {
 		return this.#id;
 	}
-
-	set id(id) {
-		return id;
-	}
 }
 
 class TodoProject extends TodoObject {
