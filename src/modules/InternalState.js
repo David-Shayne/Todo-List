@@ -1,3 +1,5 @@
+import { TodoProject } from "./todoClasses";
+
 // Single responsibility is to hold and modify an internal state object of todo data
 export default class InternalState {
 	static #state;
@@ -22,6 +24,10 @@ export default class InternalState {
 
 	// Adds a project to internal state
 	static addProject(projectInstance) {
+		if (!(projectInstance instanceof TodoProject)) {
+			throw new Error("Project must be an instance of TodoProject");
+		}
+
 		this.#state.push(projectInstance);
 	}
 }
