@@ -2,10 +2,11 @@
 class TodoObject {
 	#id;
 
-	constructor(title, desc = "", id = crypto.randomUUID()) {
+	constructor(title, desc = "", id) {
 		this.title = title;
 		this.desc = desc;
-		this.#id = id;
+		// id is either given or assigned a random UUID
+		this.#id = id || crypto.randomUUID();
 	}
 
 	get id() {
@@ -24,7 +25,6 @@ class TodoProject extends TodoObject {
 	constructor({ title, desc, todoItemArray = [], id }) {
 		super(title, desc, id);
 		this.#todoItemArray = todoItemArray;
-		this.id = id;
 	}
 
 	addTodoItem = function (todoItem) {
@@ -60,8 +60,8 @@ class TodoItem extends TodoObject {
 	#priority;
 
 	//Takes in a parsed JSON object to create the instance
-	constructor({ title, desc, priority = 1, completed = false, dueDate = Date.now() } = {}) {
-		super(title, desc);
+	constructor({ title, desc, priority = 1, completed = false, dueDate = Date.now(), id } = {}) {
+		super(title, desc, id);
 		this.#priority = priority;
 		this.#completed = completed;
 		this.dueDate = dueDate;
