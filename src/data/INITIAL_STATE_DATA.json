@@ -1,1 +1,31 @@
-"[{\"title\":\"project1\",\"desc\":\"My first project!\",\"id\":\"a\",\"todoItemArray\":[{\"title\":\"clean the house\",\"desc\":\"Make sure everything is clean\",\"priority\":3},{\"title\":\"finish sanding wall\",\"completed\":\"true\"}]},{\"title\":\"project2\",\"desc\":\"awdawwdawd project!\",\"todoItemArray\":[{\"title\":\"clean the house\",\"desc\":\"Make sure everything is clean\",\"priority\":3},{\"title\":\"finish sanding wall\",\"completed\":\"true\"}]}]"
+[
+	{
+		"title": "House Duties",
+		"desc": "Day to day house duties that must be completed",
+		"todoItemArray": [
+			{
+				"title": "clean the house",
+				"desc": "Make sure everything is clean",
+				"priority": 3
+			},
+			{
+				"title": "finish making bed",
+				"completed": true
+			}
+		]
+	},
+	{
+		"title": "Hygeine",
+		"desc": "My normal day-to-day hygeine todos",
+		"todoItemArray": [
+			{
+				"title": "Poop in toilet",
+				"priority": 3
+			},
+			{
+				"title": "brush teeth",
+				"completed": "true"
+			}
+		]
+	}
+]
