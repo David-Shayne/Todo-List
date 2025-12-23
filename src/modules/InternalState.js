@@ -1,31 +1,27 @@
 // Single responsibility is to hold and modify an internal state object of todo data
 export default class InternalState {
-	#state;
+	static #state;
 
-	constructor(state = []) {
-		this.#state = state;
-	}
-
-	getState() {
+	static getState() {
 		return this.#state;
 	}
 
-	setState(stateObject) {
+	static setState(stateObject) {
 		this.#state = stateObject;
 	}
 
 	// Deletes project from internal state by matching UUID
-	deleteProject(id) {
+	static deleteProject(id) {
 		this.#state = this.#state.filter((project) => id !== project.id);
 	}
 
 	// Returns project from internal state by matching UUID
-	getProject(id) {
+	static getProject(id) {
 		return this.#state.filter((project) => id === project.id);
 	}
 
 	// Adds a project to internal state
-	addProject(projectInstance) {
+	static addProject(projectInstance) {
 		this.#state.push(projectInstance);
 	}
 }
