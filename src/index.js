@@ -51,6 +51,3 @@ INITIAL_STATE_DATA = getPopulatedData(INITIAL_STATE_DATA);
 
 initLocalStorageState(INITIAL_STATE_DATA);
 syncInternalState(LocalStorageAPI.getState());
-
-InternalState.modifyProject("c439322b-bf7e-4c1d-af80-9995c9989a80", "id", "yolo");
-syncLocalState(InternalState.getState());
